@@ -26,8 +26,10 @@ function toggleTask(taskId){
 
     if(task.length > 0){
         const currentTask = task[0];
-        currentTask.document = !currentTask.done;
+        currentTask.done = !currentTask.done;
         renderList();
+        // showNotification('toggle done');
+        return;
     }
     showNotification('something went wrong');
 }
@@ -36,14 +38,14 @@ function deleteTask(taskId){
     const newTasks = tasks.filter((task) => task.id !== taskId);
     tasks = newTasks;
     renderList();
-    showNotification('task deleted successfully');
+    // showNotification('task deleted successfully');
 }
 
 function addTask(task){
     if(task){
         tasks.push(task);
         renderList();
-        showNotification('task added successfully');
+        // showNotification('task added successfully');
         return;
     }
     showNotification('task cannot be added');
@@ -71,4 +73,15 @@ function handleInputKeypress(e){
         addTask(task);
     }
 }
+function handleClickListener(e){
+    const target = e.target;
+    if(target.className === 'delete'){
+        const taskId = target.dataset.id;
+        deleteTask(taskId);
+    }else if(target.className === 'custom-checkbox'){
+        const taskId = target.id;
+        toggleTask(taskId);
+    }
+}
 addTaskInput.addEventListener('keyup', handleInputKeypress);
+document.addEventListener('click', handleClickListener);
