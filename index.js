@@ -8,7 +8,7 @@ function addTaskToDOM(task){
     li.innerHTML = `
         <input type="checkbox" id="${task.id}" ${task.done ? 'checked': ''} class="custom-checkbox">
         <label for="${task.id}"">${task.text}</label>
-        <img src="/images/bin.png" alt="del" class="delete" data-id="${task.id}"">
+        <img src="https://github.com/JayanthSGowda/TodoVanillaJs/blob/main/images/bin.png" alt="del" class="delete" data-id="${task.id}"">
 
     `;
 
