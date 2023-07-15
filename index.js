@@ -83,5 +83,9 @@ function handleClickListener(e){
         toggleTask(taskId);
     }
 }
-addTaskInput.addEventListener('keyup', handleInputKeypress);
-document.addEventListener('click', handleClickListener);
+function intiialize(){
+    addTaskInput.addEventListener('keyup', handleInputKeypress);
+    document.addEventListener('click', handleClickListener);
+}
+
+intiialize();
